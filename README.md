@@ -1,2 +1,2 @@
-# DeliveryApp
+# DeliveryApps
 Delivery App Android
