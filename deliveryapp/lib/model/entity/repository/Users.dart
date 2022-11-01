@@ -14,6 +14,7 @@ class UserRepository {
         isAdmin: true);
 
     _users["ldaza@mail.com"] = UserEntity(
+        /* _users: base de datos */
         email: "ldaza@email.com",
         name: "Lore ",
         lastname: "Daza",
@@ -23,6 +24,12 @@ class UserRepository {
         isAdmin: false);
   }
   UserEntity findByEmail(String email) {
-    return UserEntity();
+    var user = _users[email];
+
+    if (user == null) {
+      throw Exception("User don't found");
+    }
+
+    return user;
   }
 }
