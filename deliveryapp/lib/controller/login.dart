@@ -1,3 +1,5 @@
+import 'Request/LoginRequest.dart';
+
 import '../model/entity/repository/Users.dart'; /* siempre importar relativo ---/ */
 
 class Logincontroller {
@@ -7,13 +9,13 @@ class Logincontroller {
     _userRepository = UserRepository();
   }
 
-  void validatEmailPassword(String email, String password) {
+  void validatEmailPassword(LoginRequest request) {
     /* Consultar usuario que tenga el correo dado */
 
     var user = _userRepository.findByEmail(email);
 
     /* Verificar si la clave es igual a la que esta en BD */
-    if (user.password != password) {
+    if (user.password != LoginRequest) {
       throw Exception("Invalid credentials");
     }
   }
