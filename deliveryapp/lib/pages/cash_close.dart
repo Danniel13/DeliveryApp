@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/drawer.dart';
+import '../Widgets/drawer.dart';
 
 class CashClosePage extends StatelessWidget {
   const CashClosePage({super.key});
