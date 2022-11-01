@@ -3,7 +3,7 @@ import 'package:deliveryapp/pages/Payments.dart';
 
 class LoginPage extends StatelessWidget {
   final _imageUrl = "img/images/logoto.png";
-  final late model;
+  final String model;
 
   const LoginPage({super.key});
 
