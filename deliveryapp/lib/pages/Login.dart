@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:deliveryapp/pages/Payments.dart';
+import '../../controller/login.dart';
+import '../../controller/Request/LoginRequest.dart';
+import 'Payments.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginView extends StatelessWidget {
   final _imageUrl = "img/images/logoto.png";
-  final String model;
+  late LoginController _controller;
+  late LoginRequest _request;
 
-  const LoginPage({super.key});
+  LoginPage({super.key}) {
+    _controller = LoginController();
+    _request = LoginRequest();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,14 +67,33 @@ class LoginPage extends StatelessWidget {
             ),
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                // TODO: Validar usuario y contraseña en BD
+                formKey.currentState!.save();
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PaymentsPage(),
-                  ),
-                );
+                // Validar correo y clave en BD
+                try {
+                  var name = _controller.validateEmailPassword(_request);
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PaymentsPage(
+                        email: _request.email,
+                        name: name,
+                      ),
+                    ),
+                  );
+                } catch (e) {
+                  // showDialog(
+                  //   context: context,
+                  //   builder: (context) => AlertDialog(
+                  //     title: const Text("Ventas"),
+                  //     content: Text(e.toString()),
+                  //   ),
+                  // );
+
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(e.toString())));
+                }
               }
             },
           ),
@@ -97,6 +122,9 @@ class LoginPage extends StatelessWidget {
         }
         return null;
       },
+      onSaved: (value) {
+        _request.email = value!;
+      },
     );
   }
 
@@ -116,6 +144,9 @@ class LoginPage extends StatelessWidget {
           return "Minimo debe contener 6 caracteres";
         }
         return null;
+      },
+      onSaved: (value) {
+        _request.password = value!;
       },
     );
   }
