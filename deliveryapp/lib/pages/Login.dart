@@ -8,7 +8,7 @@ class LoginView extends StatelessWidget {
   late LoginController _controller;
   late LoginRequest _request;
 
-  LoginPage({super.key}) {
+  LoginView({super.key}) {
     _controller = LoginController();
     _request = LoginRequest();
   }

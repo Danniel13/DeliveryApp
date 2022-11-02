@@ -3,7 +3,10 @@ import '../pages/cash_close.dart';
 import '../pages/Payments.dart';
 
 class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({super.key});
+  final String email;
+  final String name;
+
+  const DrawerWidget({super.key, required this.email, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,10 @@ class DrawerWidget extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const PaymentsPage(),
+                    builder: (context) => PaymentsPage(
+                      email: email,
+                      name: name,
+                    ),
                   ));
             },
           ),
@@ -57,8 +63,6 @@ class DrawerWidget extends StatelessWidget {
   Widget _header() {
     // TODO: Consultar los datos de la cabecera
     const image = Icon(Icons.manage_accounts);
-    const name = "Cesar Diaz";
-    const email = "cesar@email.com";
 
     return Row(
       children: [
@@ -67,25 +71,27 @@ class DrawerWidget extends StatelessWidget {
           child: image,
         ),
         const SizedBox(width: 8),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            Text(
-              name,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                name,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              email,
-              style: TextStyle(
-                color: Colors.white,
+              const SizedBox(height: 8),
+              Text(
+                email,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         )
       ],
     );

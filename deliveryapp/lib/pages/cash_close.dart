@@ -11,7 +11,7 @@ class CashClosePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Cierre de caja"),
       ),
-      drawer: const DrawerWidget(),
+      drawer: const DrawerWidget(email: "", name: ""),
     );
   }
 }
