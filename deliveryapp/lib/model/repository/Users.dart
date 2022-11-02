@@ -1,4 +1,4 @@
-import 'package:deliveryapp/model/entity/Users.dart';
+import '../entity/Users.dart';
 
 class UserRepository {
   final _users = <String, UserEntity>{};

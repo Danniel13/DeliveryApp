@@ -15,7 +15,7 @@ class LoginController {
 
     // Verificar si la clave es igual a la que está en la BD
     if (user.password != request.password) {
-      throw Exception("Credenciales inválidas");
+      throw Exception("Invalid Credentials");
     }
 
     return user.name!;
