@@ -6,6 +6,7 @@ import 'firebase_options.dart';
 /* importar ubicaciones relativas-corresponden a las exactas del directorio */
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
