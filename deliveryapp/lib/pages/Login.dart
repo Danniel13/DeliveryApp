@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import '../../controller/login.dart';
 import '../../controller/Request/LoginRequest.dart';
 import 'Payments.dart';
+import 'Register.dart';
 
 class LoginView extends StatelessWidget {
-  final _imageUrl = "img/images/logoto.png";
+  final _imageUrl = "assets/images/ventas.jpg";
   late LoginController _controller;
   late LoginRequest _request;
 
@@ -26,7 +27,12 @@ class LoginView extends StatelessWidget {
               _inicioAlternativo(),
               TextButton(
                 child: const Text("No tiene usuario, Registrate aqui"),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterPage()),
+                  );
+                },
               ),
             ],
           ),
@@ -65,13 +71,13 @@ class LoginView extends StatelessWidget {
               "Iniciar sesion",
               style: TextStyle(fontSize: 24),
             ),
-            onPressed: () {
+            onPressed: () async {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
 
                 // Validar correo y clave en BD
                 try {
-                  var name = _controller.validateEmailPassword(_request);
+                  var name = await _controller.validateEmailPassword(_request);
 
                   Navigator.push(
                     context,
