@@ -10,7 +10,6 @@ class UserRepository {
         lastname: "Gonzalez",
         address: "cll 7 ·3-41",
         phonenumber: "3719710",
-        password: "soporte123",
         isAdmin: true);
 
     _users["ldaza@mail.com"] = UserEntity(
@@ -20,7 +19,6 @@ class UserRepository {
         lastname: "Daza",
         address: "cll 7 ·3-42",
         phonenumber: "3145789696",
-        password: "1234567890",
         isAdmin: false);
   }
   UserEntity findByEmail(String email) {
@@ -31,5 +29,9 @@ class UserRepository {
     }
 
     return user;
+  }
+
+  void save(UserEntity user) {
+    print(user);
   }
 }

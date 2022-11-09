@@ -3,7 +3,6 @@ class UserEntity {
   late String? lastname;
   late String? name;
   late String? address;
-  late String? password;
   late String? phonenumber;
   late bool? isAdmin;
 
@@ -13,6 +12,10 @@ class UserEntity {
       this.name,
       this.address,
       this.phonenumber,
-      this.password,
       this.isAdmin});
+
+  @override
+  String toString() {
+    return "UserEntity {$email, $lastname, $name, $address, $phonenumber, $isAdmin}";
+  }
 }
